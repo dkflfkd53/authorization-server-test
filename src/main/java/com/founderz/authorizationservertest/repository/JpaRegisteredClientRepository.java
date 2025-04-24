@@ -19,18 +19,17 @@ public class JpaRegisteredClientRepository implements RegisteredClientRepository
 
     @Override
     public void save(RegisteredClient registeredClient) {
-        Client entity = new Client();
-        entity.setClientId(registeredClient.getClientId());
-        entity.setClientSecret(registeredClient.getClientSecret());
-        entity.setRedirectUris(registeredClient.getRedirectUris());
-        entity.setScopes(registeredClient.getScopes());
-
-        clientRepository.save(entity);
+        clientRepository.save(
+                Client.builder()
+                        .clientId(registeredClient.getClientId())
+                        .clientSecret(registeredClient.getClientSecret())
+                        .redirectUris(registeredClient.getRedirectUris())
+                        .scopes(registeredClient.getScopes())
+                        .build());
     }
 
     @Override
     public RegisteredClient findById(String id) {
-        // ID는 일반적으로 UUID지만 여기선 생략
         throw new UnsupportedOperationException("Find by ID not supported.");
     }
 
