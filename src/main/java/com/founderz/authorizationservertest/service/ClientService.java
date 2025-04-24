@@ -24,12 +24,12 @@ public class ClientService {
     @Transactional
     public void registerClient(@RequestBody ClientRegistrationRequest request) {
         RegisteredClient client = RegisteredClient.withId(UUID.randomUUID().toString())
-                .clientId(request.clientId())
-                .clientSecret(passwordEncoder.encode(request.clientSecret())) // 또는 암호화 필요
+                .clientId(request.client_id())
+                .clientSecret(passwordEncoder.encode(request.client_secret()))
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-                .redirectUris(uris -> uris.addAll(request.redirectUris()))
+                .redirectUris(uris -> uris.addAll(request.redirect_uris()))
                 .scopes(scopes -> scopes.addAll(request.scopes()))
                 .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
                 .build();
