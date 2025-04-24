@@ -16,7 +16,7 @@ public class ClientController {
     private final ClientService clientService;
 
     @PostMapping("/")
-    public void  registerClient(@RequestBody ClientRegistrationRequest request) {
+    public void registerClient(@RequestBody ClientRegistrationRequest request) {
         clientService.registerClient(request);
     }
 }
