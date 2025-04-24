@@ -1,0 +1,41 @@
+
+server:
+  port: 9000
+
+logging:
+  level:
+    org.springframework.security: trace
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/das?useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: wjdgus2007?
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  security:
+    oauth2:
+      authorization server:
+        client:
+          oidc-client:
+            registration:
+              client-id: "oidc-client"
+              client-secret: "{noop}secret"
+              client-authentication-methods:
+                - "client_secret_basic"
+              authorization-grant-types:
+                - "authorization_code"
+                - "refresh_token"
+              redirect-uris:
+                - "http://localhost:3000"
+              post-logout-redirect-uris:
+                - "http://127.0.0.1:8080/"
+              scopes:
+                - "openid"
+                - "profile"
+            require-authorization-consent: true
