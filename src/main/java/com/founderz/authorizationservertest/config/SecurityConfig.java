@@ -18,6 +18,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.http.MediaType;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -38,6 +39,13 @@ public class SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public WebSecurityCustomizer webSecurityCustomizer() {
+        return web -> web.debug(false)
+                .ignoring()
+                .requestMatchers("/images/**", "/css/**", "/assets/**", "/favicon.ico");
     }
 
     /**
@@ -64,12 +72,23 @@ public class SecurityConfig {
     @Order(2)
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable);
+
         http.authorizeHttpRequests(authorize -> {
             authorize
                     .requestMatchers("/**").permitAll()
                     .anyRequest().authenticated();
         });
-        http.formLogin(withDefaults());
+
+        http.formLogin(configurer -> { // 여기만 호출
+            configurer
+                    .loginPage("/login")
+                    .permitAll();
+        });
+
+        http.logout(configurer -> {
+            configurer.logoutSuccessUrl("/");
+        });
+
         return http.build();
     }
 
