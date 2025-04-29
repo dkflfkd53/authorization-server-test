@@ -1,62 +1,258 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
-
 body {
-    background: white;
-    font-family: "Roboto", sans-serif;
-}
-
-h1 {
-    color: black;
-    font-weight: bold;
-    font-size: 24px;
-    margin-bottom: 24px;
-}
-
-button {
-    width: 100%;
-    height: 48px;
-    border: none;
-    background-color: black;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 4px;
-}
-
-#login-page {
+    background-color: var(--zinc-50); /* 배경 색을 여기서 지정 */
+    margin: 0;
+    height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+}
+
+.o-auth {
+    display: flex;
+    flex-direction: column;
     width: 100vw;
     height: 100vh;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    position: relative;
+    transform: scale(0.8); /* 🔥 80% 크기로 축소 */
+    transform-origin: center; /* 중심을 기준으로 줄이기 */
 }
-.login-form {
-    text-align: center;
-    background: #ddd;
-    width: 100%;
-    max-width: 360px;
-    padding: 32px 24px;
-    border-radius: 12px;
-    margin: 18px;
+
+.o-auth .logo-with-texts {
+    gap: 12px;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    flex: 0 0 auto;
 }
-.login-form input {
-    font-family: "Roboto", sans-serif;
-    outline: 0;
-    background: white;
+
+.o-auth .logo-with-text {
+    gap: 4px;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.o-auth .text-wrapper {
+    position: relative;
+    width: fit-content;
+    margin-top: -1.00px;
+    font-family: "ABeeZee-Regular", Helvetica;
+    font-weight: 400;
+    color: #0090ff;
+    font-size: 36px;
+    letter-spacing: 0;
+    line-height: 28px;
+    white-space: nowrap;
+}
+
+.o-auth .div {
+    position: relative;
+    width: fit-content;
+    font-family: "Pretendard-Medium", Helvetica;
+    font-weight: 500;
+    color: var(--zinc-500);
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: 20px;
+    white-space: nowrap;
+}
+
+.o-auth .frame {
+    display: flex;
+    flex-direction: column;
+    width: 480px;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 24px;
+    position: relative;
+    flex: 0 0 auto;
+    background-color: var(--white);
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid;
+    border-color: var(--zinc-200);
+}
+
+.o-auth .text-wrapper-2 {
+    position: relative;
+    width: fit-content;
+    margin-top: -1.00px;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-weight: 600;
+    color: var(--black);
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+}
+
+.o-auth .frame-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    position: relative;
+    align-self: stretch;
     width: 100%;
-    border: 0;
-    margin: 0 0 14px;
-    padding: 14px;
+    flex: 0 0 auto;
+}
+
+.o-auth .frame-3 {
+    display: inline-flex;
+    flex-direction: column;
+    height: 182px;
+    align-items: flex-start;
+    gap: 30px;
+    position: relative;
+}
+
+.o-auth .input {
+    display: flex;
+    flex-direction: column;
+    width: 432px;
+    height: 76px;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 8px;
+    position: relative;
+}
+
+.o-auth .label {
+    position: relative;
+    align-self: stretch;
+    margin-top: -1.00px;
+    font-family: "Pretendard-Medium", Helvetica;
+    font-weight: 500;
+    color: var(--zinc-800);
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 20px;
+}
+
+.o-auth .placeholder-wrapper {
+    font-size: 16px;
+    display: flex;
+    height: 48px;
+    align-items: center;
+    gap: 10px;
+    padding: 0px 16px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    background-color: var(--zinc-50);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid;
+    border-color: var(--zinc-200);
+}
+
+.o-auth .placeholder {
+    position: relative;
+    width: fit-content;
+    font-family: "ABeeZee-Regular", Helvetica;
+    font-weight: 400;
+    color: var(--zinc-500);
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 20px;
+    white-space: nowrap;
+}
+
+.o-auth .frame-4 {
+    display: flex;
+    height: 48px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 16px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    background-color: var(--zinc-50);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid;
+    border-color: var(--zinc-200);
+}
+
+.o-auth .eye {
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
+
+.o-auth .p {
+    position: relative;
+    align-self: stretch;
+    font-family: "ABeeZee-Regular", Helvetica;
+    font-weight: 400;
+    color: var(--zinc-500);
+    font-size: 11px;
+    letter-spacing: 0;
+    line-height: 18px;
+}
+
+.o-auth .span {
+    text-decoration: underline;
+}
+
+.o-auth .text-wrapper-3 {
+    font-family: "ABeeZee-Regular", Helvetica;
+    font-weight: 400;
+    color: #71717a;
+    font-size: 11px;
+    letter-spacing: 0;
+    line-height: 18px;
+}
+
+.o-auth .button {
+    all: unset;
     box-sizing: border-box;
-    font-size: 14px;
-    border-radius: 4px;
+    display: flex;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 16px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    background-color: #1696f9;
+    border-radius: 8px;
+    overflow: hidden;
 }
-.login-form .message {
+
+.o-auth .button-2 {
+    all: unset;
+    box-sizing: border-box;
+    position: relative;
+    width: fit-content;
+    font-family: "Pretendard-Medium", Helvetica;
+    font-weight: 500;
+    color: var(--white);
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 20px;
+    white-space: nowrap;
+}
+
+.o-auth .text-wrapper-4 {
+    position: relative;
+    width: fit-content;
+    font-family: "ABeeZee-Regular", Helvetica;
+    font-weight: 400;
+    color: var(--zinc-500);
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: 18px;
+    white-space: nowrap;
+}
+
+.login-text {
+    font-size: 16px;
     font-weight: bold;
-    margin: 16px 0;
-    color: #333;
-    font-size: 12px;
-}
-.login-form .error {
-    color: crimson;
+    color: #000000;
+    margin-bottom: 8px;
 }

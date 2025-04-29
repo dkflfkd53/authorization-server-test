@@ -1,28 +1,45 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" lang="">
 <head>
-    <title>Hello Spring OAuth2</title>
-    <link rel="stylesheet" th:href="@{/css/reset.css}">
+    <meta charset="utf-8" />
+    <link rel="stylesheet" th:href="@{/css/globals.css}">
+    <link rel="stylesheet" th:href="@{/css/styleguide.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title></title>
 </head>
 <body>
-<div id="login-page">
-    <div class="login-form">
-        <h1>로그인하쇼</h1>
-
-        <div class="message error" th:if="${param.error}">
-            잘못된 입력입니다. 아이디 또는 비밀번호를 다시 확인하세요.
+<div class="o-auth">
+    <div class="logo-with-texts">
+        <div class="logo-with-text"><div class="text-wrapper">DAS</div></div>
+        <div class="div">DSM Auth Service</div>
+    </div>
+    <div class="frame">
+        <div class="text-wrapper-2">DAS 계정으로 로그인 해주세요.</div>
+        <div class="frame-2">
+            <form action="/login" method="post">
+                <div class="frame-3">
+                    <div class="input">
+                        <div class="label">아이디</div>
+                        <input class="placeholder-wrapper" type="text" name="username" placeholder="아이디를 입력해주세요." required/>
+                    </div>
+                    <div class="input">
+                        <div class="label">비밀번호</div>
+                        <input class="placeholder-wrapper" type="password" name="password" placeholder="비밀번호를 입력해 주세요." required/>
+                    </div>
+                </div>
+                <p class="p">
+                    <span class="span">아이디 찾기</span>
+                    <span class="text-wrapper-3">&nbsp;&nbsp;/&nbsp;&nbsp;</span>
+                    <span class="span">비밀번호 찾기</span>
+                </p>
         </div>
-        <form th:action="@{/login}" method="post">
-            <div>
-                <input type="text" name="username" placeholder="아이디"/>
-            </div>
-            <div>
-                <input type="password" name="password" placeholder="비밀번호"/>
-            </div>
-            <button type="submit">로그인</button>
+        <button class="button" type="submit">
+            <span class="button-2">로그인 하기</span>
+        </button>
         </form>
     </div>
+    <div class="text-wrapper-4">© 대덕소프트웨어마이스터고등학교</div>
 </div>
 </body>
 </html>
+
